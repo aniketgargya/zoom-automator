@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { defaultSettings } from "../../shared/defaults";
-import { GetSettings, SetSettings, Settings } from "../../shared/types";
+import { SET_SETTINGS_ACTION, GetSettings, SetSettings, Settings } from "../../shared/types";
 import { Button, Switch, FormControlLabel, TextField, Box } from "@material-ui/core";
 import update from "immutability-helper";
 import _ from "lodash";
@@ -25,7 +25,7 @@ export const SettingsMenu = () => {
                     onSubmit={event => {
                         event.preventDefault();
                         chrome.runtime.sendMessage({
-                            action: "SET_SETTINGS",
+                            action: SET_SETTINGS_ACTION,
                             payload: settings
                         } as SetSettings);
                         setChanged(false);

@@ -1,5 +1,5 @@
 import { defaultSettings } from "../shared/defaults";
-import { Settings } from "../shared/types";
+import { GET_SETTINGS_ACTION, Settings } from "../shared/types";
 import "regenerator-runtime/runtime.js";
 import _ from "lodash";
 
@@ -26,7 +26,7 @@ const main = async () => {
             }
         });
 
-        port.postMessage({ action: "GET_SETTINGS" });
+        port.postMessage({ action: GET_SETTINGS_ACTION });
 
         let leaveButton: null | HTMLElement = null;
         while (!leaveButton) {

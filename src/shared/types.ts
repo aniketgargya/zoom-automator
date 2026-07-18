@@ -1,5 +1,8 @@
 import { Literal, Record, Boolean, Static, String, Number, Array } from "runtypes";
 
+export const GET_SETTINGS_ACTION = "GET_SETTINGS";
+export const SET_SETTINGS_ACTION = "GET_SETTINGS";
+
 export const ZoomClass = Record({
     name: String,
     link: String,
@@ -19,12 +22,12 @@ export const Settings = Record({
 export type Settings = Static<typeof Settings>;
 
 export const GetSettings = Record({
-    action: Literal("GET_SETTINGS")
+    action: Literal(GET_SETTINGS_ACTION)
 });
 export type GetSettings = Static<typeof GetSettings>;
 
 export const SetSettings = Record({
-    action: Literal("SET_SETTINGS"),
+    action: Literal(SET_SETTINGS_ACTION),
     payload: Settings
 });
 export type SetSettings = Static<typeof SetSettings>;
