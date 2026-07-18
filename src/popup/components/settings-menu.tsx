@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { defaultSettings } from "../../shared/defaults";
-import { SET_SETTINGS_ACTION, GetSettings, SetSettings, Settings } from "../../shared/types";
+import {
+    GET_SETTINGS_ACTION,
+    SET_SETTINGS_ACTION,
+    GetSettings,
+    SetSettings,
+    Settings
+} from "../../shared/types";
 import { Button, Switch, FormControlLabel, TextField, Box } from "@material-ui/core";
 import update from "immutability-helper";
 import _ from "lodash";
@@ -10,7 +16,7 @@ export const SettingsMenu = () => {
     const [changed, setChanged] = useState<boolean>(false);
 
     useEffect(() => {
-        chrome.runtime.sendMessage({ action: "GET_SETTINGS" } as GetSettings, response => {
+        chrome.runtime.sendMessage({ action: GET_SETTINGS_ACTION } as GetSettings, response => {
             try {
                 const settings = Settings.check(response);
                 setSettings(settings);

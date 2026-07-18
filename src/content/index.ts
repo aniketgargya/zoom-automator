@@ -1,5 +1,10 @@
 import { defaultSettings } from "../shared/defaults";
-import { GET_SETTINGS_ACTION, Settings } from "../shared/types";
+import {
+    GET_SETTINGS_ACTION,
+    RECEIVE_SETTINGS_ACTION,
+    SETTINGS_PORT_NAME,
+    Settings
+} from "../shared/types";
 import "regenerator-runtime/runtime.js";
 import _ from "lodash";
 
@@ -14,11 +19,11 @@ const main = async () => {
         let settings: Settings = _.cloneDeep(defaultSettings);
         const intervals: number[] = [];
 
-        const port = chrome.runtime.connect({ name: "SETTINGS_PORT" });
+        const port = chrome.runtime.connect({ name: SETTINGS_PORT_NAME });
 
         port.onMessage.addListener(request => {
             switch (request.action) {
-                case "RECEIVE_SETTINGS":
+                case RECEIVE_SETTINGS_ACTION:
                     try {
                         settings = Settings.check(request.payload);
                         break;

@@ -2,6 +2,8 @@ import { Literal, Record, Boolean, Static, String, Number, Array } from "runtype
 
 export const GET_SETTINGS_ACTION = "GET_SETTINGS";
 export const SET_SETTINGS_ACTION = "SET_SETTINGS";
+export const RECEIVE_SETTINGS_ACTION = "RECEIVE_SETTINGS";
+export const SETTINGS_PORT_NAME = "SETTINGS_PORT";
 
 export const ZoomClass = Record({
     name: String,
