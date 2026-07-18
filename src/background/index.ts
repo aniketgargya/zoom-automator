@@ -1,7 +1,10 @@
 import { defaultSettings, defaultZoomClasses } from "../shared/defaults";
 import {
+    GET_SETTINGS_ACTION,
     GetSettings,
     GetZoomClasses,
+    RECEIVE_SETTINGS_ACTION,
+    SETTINGS_PORT_NAME,
     SetSettings,
     Settings,
     SetZoomClasses,
@@ -20,7 +23,7 @@ const setSettings = (newSettings: Settings) => {
 
     settingsPorts.forEach(settingsPort => {
         settingsPort.postMessage({
-            action: "RECEIVE_SETTINGS",
+            action: RECEIVE_SETTINGS_ACTION,
             payload: settings
         });
     });
@@ -50,16 +53,16 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 chrome.runtime.onConnect.addListener(port => {
     switch (port.name) {
-        case "SETTINGS_PORT":
+        case SETTINGS_PORT_NAME:
             port.onDisconnect.addListener(() => {
                 settingsPorts = settingsPorts.filter(settingsPort => settingsPort != port);
             });
 
             port.onMessage.addListener(request => {
                 switch (request.action) {
-                    case "GET_SETTINGS":
+                    case GET_SETTINGS_ACTION:
                         port.postMessage({
-                            action: "RECEIVE_SETTINGS",
+                            action: RECEIVE_SETTINGS_ACTION,
                             payload: settings
                         });
                         break;
