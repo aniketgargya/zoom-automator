@@ -32,7 +32,7 @@ export const SettingsMenu = () => {
                     }}
                     onChange={() => setChanged(true)}
                 >
-                    <Box mb={2}>
+                    <Box mb={3}>
                         <FormControlLabel
                             control={
                                 <Switch
@@ -50,7 +50,7 @@ export const SettingsMenu = () => {
                             label="Automation On"
                         />
                     </Box>
-                    <Box mb={2}>
+                    <Box mb={3}>
                         <TextField
                             fullWidth={true}
                             label="Participant Drop"
@@ -79,7 +79,7 @@ export const SettingsMenu = () => {
                             }}
                         />
                     </Box>
-                    <Box mb={2}>
+                    <Box mb={3}>
                         <TextField
                             fullWidth={true}
                             label="Drop Timespan"
@@ -109,6 +109,7 @@ export const SettingsMenu = () => {
                         />
                     </Box>
                     <Button
+                        mb={3}
                         size="small"
                         variant="contained"
                         color="primary"
