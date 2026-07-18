@@ -1,7 +1,7 @@
 import { Literal, Record, Boolean, Static, String, Number, Array } from "runtypes";
 
 export const GET_SETTINGS_ACTION = "GET_SETTINGS";
-export const SET_SETTINGS_ACTION = "GET_SETTINGS";
+export const SET_SETTINGS_ACTION = "SET_SETTINGS";
 
 export const ZoomClass = Record({
     name: String,
